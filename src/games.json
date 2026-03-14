@@ -10,5 +10,23 @@
     "title": "Veck.io",
     "thumbnail": "https://picsum.photos/seed/veck/400/300",
     "iframeUrl": "https://veck.io/?cg=true&auto_play=true&skipPrerollFirstSession=true"
+  },
+  {
+    "id": "ragdoll-archers",
+    "title": "Ragdoll Archers",
+    "thumbnail": "https://picsum.photos/seed/archers/400/300",
+    "iframeUrl": "https://games.crazygames.com/en_US/ragdoll-archers/index.html?v=1.352"
+  },
+  {
+    "id": "cubes-2048-io",
+    "title": "Cubes 2048.io",
+    "thumbnail": "https://picsum.photos/seed/cubes2048/400/300",
+    "iframeUrl": "https://games.crazygames.com/en_US/cubes-2048-io/index.html"
+  },
+  {
+    "id": "count-masters",
+    "title": "Count Masters",
+    "thumbnail": "https://picsum.photos/seed/countmasters/400/300",
+    "iframeUrl": "https://games.crazygames.com/en_US/count-masters-stickman-games/index.html"
   }
 ]
