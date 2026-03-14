@@ -3,77 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unblocked Games Hub</title>
-    <link rel="stylesheet" href="./src/style.css">
+    <title>My Google AI Studio App</title>
   </head>
-  <body class="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-emerald-500/30">
-    <!-- Navbar -->
-    <nav class="sticky top-0 z-40 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-2 cursor-pointer" id="logo">
-          <div class="p-2 bg-emerald-500 rounded-lg shadow-lg shadow-emerald-500/20">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></svg>
-          </div>
-          <h1 class="text-xl font-bold tracking-tight uppercase italic">Unblocked Hub</h1>
-        </div>
-
-        <div class="relative w-full md:w-96">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2 text-white/40"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search games..."
-            class="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all placeholder:text-white/20"
-          />
-        </div>
-      </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-6 py-8">
-      <!-- Games Grid -->
-      <div id="games-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- Games will be injected here -->
-      </div>
-
-      <!-- Player Container (Hidden by default) -->
-      <div id="player-container" class="hidden flex flex-col gap-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <button id="close-player" class="p-2 hover:bg-white/10 rounded-lg transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-            </button>
-            <h2 id="game-title" class="text-2xl font-bold">Game Title</h2>
-          </div>
-          <div class="flex items-center gap-2">
-            <button id="fullscreen-btn" class="p-2 hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 3 6 6"/><path d="m9 21-6-6"/><path d="M21 3v6h-6"/><path d="M3 21v-6h6"/></svg>
-              <span class="text-sm font-medium hidden sm:inline">Fullscreen</span>
-            </button>
-            <a id="open-original" href="#" target="_blank" class="p-2 hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-              <span class="text-sm font-medium hidden sm:inline">Open Original</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="relative bg-black rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-video w-full">
-          <iframe id="game-iframe" src="" class="w-full h-full border-none" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
-        <div class="flex flex-col gap-2 mt-4">
-          <h4 id="about-title" class="text-white/40 uppercase text-xs font-bold tracking-widest">About this game</h4>
-          <p id="about-text" class="text-white/80 leading-relaxed"></p>
-        </div>
-      </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="mt-auto border-t border-white/5 py-8 px-6 text-center text-white/20 text-sm">
-      <p>© 2026 Unblocked Hub • Built with HTML, CSS & JS</p>
-    </footer>
-
-    <script src="./src/main.js"></script>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
 
