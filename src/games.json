@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "ampler-launcher",
+    "title": "Ampler Launcher",
+    "thumbnail": "https://picsum.photos/seed/ampler/400/300",
+    "iframeUrl": "https://irv77.github.io/AmplerLauncher/"
+  },
+  {
+    "id": "veck-io",
+    "title": "Veck.io",
+    "thumbnail": "https://picsum.photos/seed/veck/400/300",
+    "iframeUrl": "https://veck.io/?cg=true&auto_play=true&skipPrerollFirstSession=true"
+  }
+]

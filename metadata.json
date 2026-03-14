@@ -1,5 +1,5 @@
 {
   "name": "Unblocked Games Hub",
   "description": "A simple and clean portal for playing unblocked web games via iframes.",
-  "requestFramePermissions": []
+  "requestFramePermissions": ["camera", "microphone", "geolocation", "fullscreen"]
 }

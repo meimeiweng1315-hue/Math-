@@ -58,7 +58,14 @@
         </div>
 
         <div class="relative bg-black rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-video w-full">
-          <iframe id="game-iframe" src="" class="w-full h-full border-none" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe 
+            id="game-iframe" 
+            src="" 
+            class="w-full h-full border-none" 
+            allow="accelerometer; gyroscope; autoplay; payment; fullscreen; microphone; clipboard-read; clipboard-write" 
+            sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-presentation allow-scripts allow-same-origin allow-downloads allow-popups-to-escape-sandbox"
+            allowfullscreen
+          ></iframe>
         </div>
 
         <div class="flex flex-col gap-2 mt-4">
