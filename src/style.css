@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+.game-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
