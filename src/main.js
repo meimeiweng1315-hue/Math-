@@ -18,35 +18,6 @@ async function init() {
 
     let games = [];
 
-    const browserSearchInput = document.getElementById('browser-search-input');
-    const browserSearchBtn = document.getElementById('browser-search-btn');
-
-    const executeBrowserSearch = () => {
-        const query = browserSearchInput.value.trim();
-        if (!query) return;
-
-        let searchUrl;
-        if (query.startsWith('http://') || query.startsWith('https://')) {
-            searchUrl = query;
-        } else if (query.includes('.') && !query.includes(' ')) {
-            searchUrl = `https://${query}`;
-        } else {
-            // Use DuckDuckGo search
-            searchUrl = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
-        }
-
-        openGame({
-            title: 'NETWORK_BROWSER',
-            iframeUrl: searchUrl,
-            description: `Browsing the network for: ${query}. Note: Some websites may block embedding for security reasons. If the page doesn't load, use the EXTERNAL_LINK button to open it in a new tab.`
-        });
-    };
-
-    browserSearchBtn.onclick = executeBrowserSearch;
-    browserSearchInput.onkeypress = (e) => {
-        if (e.key === 'Enter') executeBrowserSearch();
-    };
-
     // Load games from JSON
     try {
         // Use absolute URL to ensure it works even when nested in about:blank iframes
@@ -95,11 +66,8 @@ async function init() {
         gameIframe.src = game.iframeUrl;
         gameTitle.textContent = game.title;
         aboutTitle.textContent = `About ${game.title}`;
-        aboutText.textContent = game.description || `Enjoy ${game.title} directly in your browser. This game is loaded via a secure iframe. If the game doesn't load, try opening it in a new tab using the "Open Original" button.`;
+        aboutText.textContent = `Enjoy ${game.title} directly in your browser. This game is loaded via a secure iframe. If the game doesn't load, try opening it in a new tab using the "Open Original" button.`;
         openOriginalBtn.href = game.iframeUrl;
-        
-        // Hide browser section when playing
-        document.getElementById('browser-section').classList.add('hidden');
         
         gamesGrid.classList.add('hidden');
         settingsSection.classList.add('hidden');
@@ -111,7 +79,6 @@ async function init() {
         gameIframe.src = '';
         playerContainer.classList.add('hidden');
         settingsSection.classList.add('hidden');
-        document.getElementById('browser-section').classList.remove('hidden');
         gamesGrid.classList.remove('hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -120,7 +87,6 @@ async function init() {
         gameIframe.src = '';
         playerContainer.classList.add('hidden');
         gamesGrid.classList.add('hidden');
-        document.getElementById('browser-section').classList.add('hidden');
         settingsSection.classList.remove('hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -178,13 +144,22 @@ async function init() {
         doc.close();
     };
 
-    tabCloakBtn.onclick = () => {
+    function applyCloak() {
         document.title = 'Classes';
         const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
         link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
         link.href = 'https://ssl.gstatic.com/classroom/favicon.png';
-        document.getElementsByTagName('head')[0].appendChild(link);
+        if (!link.parentNode) {
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    }
+
+    // Auto-cloak on entry
+    applyCloak();
+
+    tabCloakBtn.onclick = () => {
+        applyCloak();
         
         tabCloakBtn.textContent = 'DISGUISE_ACTIVE';
         tabCloakBtn.classList.add('bg-cyan-500', 'text-black');
