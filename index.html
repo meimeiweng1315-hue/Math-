@@ -96,6 +96,34 @@
         </div>
       </div>
 
+      <!-- Browser Section -->
+      <div id="browser-section" class="mb-12 border-l-4 border-cyan-500 bg-cyan-500/5 p-8 neon-border-cyan relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h2 class="text-2xl font-display font-black uppercase tracking-tighter text-cyan-400 mb-6 flex items-center gap-3 neon-text-cyan">
+          <span class="w-8 h-1 bg-cyan-500"></span>
+          Network_Browser
+        </h2>
+        <div class="flex flex-col md:flex-row gap-4">
+          <div class="relative flex-1">
+            <div class="absolute inset-0 bg-cyan-500/10 blur-sm"></div>
+            <input
+              type="text"
+              id="browser-search-input"
+              placeholder="ENTER_QUERY_OR_URL..."
+              class="relative w-full bg-black/80 border-2 border-cyan-500/40 rounded-none py-3 px-4 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all placeholder:text-cyan-500/30 text-cyan-400 font-mono z-10"
+            />
+          </div>
+          <button id="browser-search-btn" class="cyber-button whitespace-nowrap">
+            EXECUTE_SEARCH
+          </button>
+        </div>
+        <p class="mt-4 text-cyan-500/40 text-[10px] font-mono uppercase tracking-widest flicker">
+          Engine: DuckDuckGo // Status: Proxy_Ready // Security: Encrypted
+        </p>
+      </div>
+
       <!-- Games Grid -->
       <div id="games-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         <!-- Games will be injected here -->
