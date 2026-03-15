@@ -1,7 +1,11 @@
 async function init() {
     const gamesGrid = document.getElementById('games-grid');
     const searchInput = document.getElementById('search-input');
-    const gamePlayer = document.getElementById('game-player');
+    const settingsBtn = document.getElementById('settings-btn');
+    const settingsModal = document.getElementById('settings-modal');
+    const closeSettings = document.getElementById('close-settings');
+    const cloakBtn = document.getElementById('cloak-btn');
+    const cloakError = document.getElementById('cloak-error');
     const playerContainer = document.getElementById('player-container');
     const gameIframe = document.getElementById('game-iframe');
     const gameTitle = document.getElementById('game-title');
@@ -80,6 +84,47 @@ async function init() {
         const query = e.target.value.toLowerCase();
         const filtered = games.filter(g => g.title.toLowerCase().includes(query));
         renderGames(filtered);
+    };
+
+    // Settings Logic
+    settingsBtn.onclick = () => {
+        settingsModal.classList.remove('hidden');
+    };
+
+    closeSettings.onclick = () => {
+        settingsModal.classList.add('hidden');
+    };
+
+    settingsModal.onclick = (e) => {
+        if (e.target === settingsModal) {
+            settingsModal.classList.add('hidden');
+        }
+    };
+
+    cloakBtn.onclick = () => {
+        cloakError.classList.add('hidden');
+        const url = window.location.href;
+        const win = window.open("about:blank", "_blank");
+        if (!win) {
+            cloakError.classList.remove('hidden');
+            return;
+        }
+        
+        win.document.body.style.margin = "0";
+        win.document.body.style.height = "100vh";
+        win.document.body.style.overflow = "hidden";
+        
+        const iframe = win.document.createElement("iframe");
+        iframe.style.border = "none";
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.margin = "0";
+        iframe.src = url;
+        
+        win.document.body.appendChild(iframe);
+        
+        // Optional: Redirect current page to something safe
+        window.location.replace("https://google.com");
     };
 }
 
