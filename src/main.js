@@ -10,6 +10,11 @@ async function init() {
     const openOriginalBtn = document.getElementById('open-original');
     const aboutTitle = document.getElementById('about-title');
     const aboutText = document.getElementById('about-text');
+    const settingsBtn = document.getElementById('settings-btn');
+    const settingsSection = document.getElementById('settings-section');
+    const aboutBlankBtn = document.getElementById('about-blank-btn');
+    const tabCloakBtn = document.getElementById('tab-cloak-btn');
+    const logo = document.getElementById('logo');
 
     let games = [];
 
@@ -56,15 +61,89 @@ async function init() {
         openOriginalBtn.href = game.iframeUrl;
         
         gamesGrid.classList.add('hidden');
+        settingsSection.classList.add('hidden');
         playerContainer.classList.remove('hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    closePlayer.onclick = () => {
+    function showHome() {
         gameIframe.src = '';
         playerContainer.classList.add('hidden');
+        settingsSection.classList.add('hidden');
         gamesGrid.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showSettings() {
+        gameIframe.src = '';
+        playerContainer.classList.add('hidden');
+        gamesGrid.classList.add('hidden');
+        settingsSection.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    logo.onclick = showHome;
+
+    settingsBtn.onclick = () => {
+        if (settingsSection.classList.contains('hidden')) {
+            showSettings();
+        } else {
+            showHome();
+        }
     };
+
+    aboutBlankBtn.onclick = () => {
+        const url = window.location.href;
+        const win = window.open();
+        if (!win) {
+            alert('Popup blocked! Please allow popups for this site to enable cloaking.');
+            return;
+        }
+        
+        const doc = win.document;
+        doc.title = 'Classes';
+        
+        const link = doc.createElement('link');
+        link.rel = 'icon';
+        link.type = 'image/png';
+        link.href = 'https://ssl.gstatic.com/classroom/favicon.png';
+        doc.head.appendChild(link);
+
+        const iframe = doc.createElement('iframe');
+        iframe.src = url;
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        iframe.style.position = 'fixed';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        iframe.style.margin = '0';
+        iframe.style.padding = '0';
+        
+        doc.body.appendChild(iframe);
+        doc.body.style.margin = '0';
+        doc.body.style.padding = '0';
+        doc.body.style.overflow = 'hidden';
+    };
+
+    tabCloakBtn.onclick = () => {
+        document.title = 'Classes';
+        const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = 'https://ssl.gstatic.com/classroom/favicon.png';
+        document.getElementsByTagName('head')[0].appendChild(link);
+        
+        tabCloakBtn.textContent = 'DISGUISE_ACTIVE';
+        tabCloakBtn.classList.add('bg-cyan-500', 'text-black');
+        
+        setTimeout(() => {
+            tabCloakBtn.textContent = 'Apply_Disguise';
+            tabCloakBtn.classList.remove('bg-cyan-500', 'text-black');
+        }, 2000);
+    };
+
+    closePlayer.onclick = showHome;
 
     fullscreenBtn.onclick = () => {
         if (gameIframe.requestFullscreen) {
@@ -77,6 +156,9 @@ async function init() {
     };
 
     searchInput.oninput = (e) => {
+        if (!settingsSection.classList.contains('hidden') || !playerContainer.classList.contains('hidden')) {
+            showHome();
+        }
         const query = e.target.value.toLowerCase();
         const filtered = games.filter(g => g.title.toLowerCase().includes(query));
         renderGames(filtered);

@@ -2,7 +2,7 @@
   {
     "id": "ampler-launcher",
     "title": "Ampler Launcher",
-    "thumbnail": "https://picsum.photos/seed/ampler/400/300",
+    "thumbnail": "https://www.minecraft.net/content/dam/games/minecraft/key-art/Minecraft-Launcher-600x600.jpg",
     "iframeUrl": "https://irv77.github.io/AmplerLauncher/"
   },
   {
@@ -28,11 +28,5 @@
     "title": "Count Masters",
     "thumbnail": "https://picsum.photos/seed/countmasters/400/300",
     "iframeUrl": "https://games.crazygames.com/en_US/count-masters-stickman-games/index.html"
-  },
-  {
-    "id": "repuls-io",
-    "title": "Repuls.io",
-    "thumbnail": "https://picsum.photos/seed/repuls/400/300",
-    "iframeUrl": "https://repuls.io/"
   }
 ]
