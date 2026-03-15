@@ -3,27 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unblocked Games Hub</title>
+    <title>unblocked website</title>
     <link rel="stylesheet" href="./src/style.css">
   </head>
-  <body class="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-emerald-500/30">
+  <body class="min-h-screen bg-[#050505] text-white font-mono selection:bg-cyan-500/30 cyberpunk-grid">
     <!-- Navbar -->
-    <nav class="sticky top-0 z-40 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
+    <nav class="sticky top-0 z-40 bg-[#050505]/90 backdrop-blur-md border-b border-cyan-500/30 px-6 py-4">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-2 cursor-pointer" id="logo">
-          <div class="p-2 bg-emerald-500 rounded-lg shadow-lg shadow-emerald-500/20">
+        <div class="flex items-center gap-2 cursor-pointer group" id="logo">
+          <div class="p-2 bg-cyan-500 rounded-none border-2 border-cyan-400 shadow-[0_0_15px_rgba(0,243,255,0.5)] group-hover:shadow-[0_0_25px_rgba(0,243,255,0.8)] transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></svg>
           </div>
-          <h1 class="text-xl font-bold tracking-tight uppercase italic">Unblocked Hub</h1>
+          <h1 class="text-xl font-black tracking-tighter uppercase italic text-cyan-400 drop-shadow-[0_0_5px_rgba(0,243,255,0.5)]">unblocked website</h1>
         </div>
 
         <div class="relative w-full md:w-96">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2 text-white/40"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2 text-cyan-500/50"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           <input
             type="text"
             id="search-input"
-            placeholder="Search games..."
-            class="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all placeholder:text-white/20"
+            placeholder="ACCESS_DATABASE..."
+            class="w-full bg-black border-2 border-cyan-500/30 rounded-none py-2 pl-10 pr-4 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all placeholder:text-cyan-500/20 text-cyan-400"
           />
         </div>
       </div>
@@ -40,24 +40,24 @@
       <div id="player-container" class="hidden flex flex-col gap-4">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-4">
-            <button id="close-player" class="p-2 hover:bg-white/10 rounded-lg transition-colors">
+            <button id="close-player" class="p-2 hover:bg-cyan-500/20 rounded-none border border-transparent hover:border-cyan-500/50 transition-all text-cyan-400">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
-            <h2 id="game-title" class="text-2xl font-bold">Game Title</h2>
+            <h2 id="game-title" class="text-2xl font-black uppercase tracking-tighter text-cyan-400 drop-shadow-[0_0_5px_rgba(0,243,255,0.3)]">Game Title</h2>
           </div>
           <div class="flex items-center gap-2">
-            <button id="fullscreen-btn" class="p-2 hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2">
+            <button id="fullscreen-btn" class="p-2 hover:bg-cyan-500/20 rounded-none border border-transparent hover:border-cyan-500/50 transition-all flex items-center gap-2 text-cyan-400">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 3 6 6"/><path d="m9 21-6-6"/><path d="M21 3v6h-6"/><path d="M3 21v-6h6"/></svg>
-              <span class="text-sm font-medium hidden sm:inline">Fullscreen</span>
+              <span class="text-xs font-bold uppercase tracking-widest hidden sm:inline">FULLSCREEN_MODE</span>
             </button>
-            <a id="open-original" href="#" target="_blank" class="p-2 hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2">
+            <a id="open-original" href="#" target="_blank" class="p-2 hover:bg-cyan-500/20 rounded-none border border-transparent hover:border-cyan-500/50 transition-all flex items-center gap-2 text-cyan-400">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-              <span class="text-sm font-medium hidden sm:inline">Open Original</span>
+              <span class="text-xs font-bold uppercase tracking-widest hidden sm:inline">EXTERNAL_LINK</span>
             </a>
           </div>
         </div>
 
-        <div class="relative bg-black rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-video w-full">
+        <div class="relative bg-black rounded-none overflow-hidden border-2 border-cyan-500/30 shadow-[0_0_30px_rgba(0,243,255,0.1)] aspect-video w-full">
           <iframe 
             id="game-iframe" 
             src="" 
@@ -68,16 +68,16 @@
           ></iframe>
         </div>
 
-        <div class="flex flex-col gap-2 mt-4">
-          <h4 id="about-title" class="text-white/40 uppercase text-xs font-bold tracking-widest">About this game</h4>
-          <p id="about-text" class="text-white/80 leading-relaxed"></p>
+        <div class="flex flex-col gap-2 mt-6 p-4 border-l-4 border-cyan-500 bg-cyan-500/5">
+          <h4 id="about-title" class="text-cyan-400 uppercase text-xs font-black tracking-[0.2em]">DATA_LOG: About this game</h4>
+          <p id="about-text" class="text-cyan-100/70 leading-relaxed text-sm font-mono"></p>
         </div>
       </div>
     </main>
 
     <!-- Footer -->
-    <footer class="mt-auto border-t border-white/5 py-8 px-6 text-center text-white/20 text-sm">
-      <p>© 2026 Unblocked Hub • Built with HTML, CSS & JS</p>
+    <footer class="mt-auto border-t border-cyan-500/10 py-8 px-6 text-center text-cyan-500/30 text-xs tracking-widest uppercase">
+      <p>© 2026 unblocked website • SYSTEM_ONLINE • SECURE_CONNECTION</p>
     </footer>
 
     <script src="./src/main.js"></script>

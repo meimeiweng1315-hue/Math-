@@ -31,16 +31,17 @@ async function init() {
 
         gamesToRender.forEach(game => {
             const card = document.createElement('div');
-            card.className = 'group relative bg-[#151515] rounded-2xl overflow-hidden border border-white/5 hover:border-emerald-500/50 transition-all cursor-pointer shadow-lg';
+            card.className = 'group relative bg-black rounded-none overflow-hidden border-2 border-cyan-500/20 hover:border-cyan-400 transition-all cursor-pointer shadow-[0_0_10px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(0,243,255,0.3)]';
             card.innerHTML = `
-                <div class="aspect-video overflow-hidden">
-                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerpolicy="no-referrer">
+                <div class="aspect-video overflow-hidden border-b-2 border-cyan-500/20">
+                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" referrerpolicy="no-referrer">
                 </div>
-                <div class="p-4 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-semibold text-lg text-white">${game.title}</h3>
-                    <p class="text-white/40 text-sm mt-1">Click to play</p>
+                <div class="p-4 bg-black relative">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <h3 class="font-bold text-lg text-cyan-400 uppercase tracking-tighter">${game.title}</h3>
+                    <p class="text-cyan-500/40 text-xs mt-1 font-mono tracking-widest">INITIALIZING_MODULE...</p>
                 </div>
-                <div class="absolute inset-0 bg-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
             `;
             card.onclick = () => openGame(game);
             gamesGrid.appendChild(card);

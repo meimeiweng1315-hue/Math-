@@ -1,5 +1,5 @@
 {
-  "name": "Unblocked Games Hub",
-  "description": "A simple and clean portal for playing unblocked web games via iframes.",
+  "name": "unblocked website",
+  "description": "A cyberpunk-themed portal for playing unblocked web games via iframes.",
   "requestFramePermissions": ["camera", "microphone", "geolocation", "fullscreen"]
 }
