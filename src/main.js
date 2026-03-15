@@ -20,7 +20,9 @@ async function init() {
 
     // Load games from JSON
     try {
-        const response = await fetch('./src/games.json');
+        // Use absolute URL to ensure it works even when nested in about:blank iframes
+        const gamesUrl = new URL('./src/games.json', window.location.href).href;
+        const response = await fetch(gamesUrl);
         games = await response.json();
         renderGames(games);
     } catch (error) {
@@ -36,17 +38,24 @@ async function init() {
 
         gamesToRender.forEach(game => {
             const card = document.createElement('div');
-            card.className = 'group relative bg-black rounded-none overflow-hidden border-2 border-cyan-500/20 hover:border-cyan-400 transition-all cursor-pointer shadow-[0_0_10px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(0,243,255,0.3)]';
+            card.className = 'group relative bg-black rounded-none overflow-hidden border-2 border-cyan-500/30 hover:border-magenta-500 transition-all cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.8)] hover:shadow-[0_0_25px_rgba(255,0,255,0.2)] neon-border-cyan hover:neon-border-magenta';
             card.innerHTML = `
-                <div class="aspect-video overflow-hidden border-b-2 border-cyan-500/20">
-                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" referrerpolicy="no-referrer">
+                <div class="aspect-video overflow-hidden border-b-2 border-cyan-500/30 relative">
+                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70 group-hover:opacity-100 cyber-pic" referrerpolicy="no-referrer">
+                    <div class="cyber-pic-overlay"></div>
+                    <div class="cyber-pic-scanlines"></div>
+                    <div class="cyber-pic-vignette"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 z-10"></div>
                 </div>
-                <div class="p-4 bg-black relative">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <h3 class="font-bold text-lg text-cyan-400 uppercase tracking-tighter">${game.title}</h3>
-                    <p class="text-cyan-500/40 text-xs mt-1 font-mono tracking-widest">INITIALIZING_MODULE...</p>
+                <div class="p-5 bg-black relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500 group-hover:bg-magenta-500 transition-colors"></div>
+                    <h3 class="font-display font-black text-xl text-cyan-400 group-hover:text-magenta-400 uppercase tracking-tighter transition-colors neon-text-cyan group-hover:neon-text-magenta">${game.title}</h3>
+                    <div class="flex items-center justify-between mt-2">
+                        <p class="text-cyan-500/30 text-[10px] font-mono tracking-[0.2em] uppercase group-hover:text-magenta-500/40">Status: Ready</p>
+                        <div class="w-2 h-2 rounded-full bg-cyan-500 group-hover:bg-magenta-500 shadow-[0_0_8px_rgba(0,243,255,0.5)] group-hover:shadow-[0_0_8px_rgba(255,0,255,0.5)] animate-pulse"></div>
+                    </div>
                 </div>
-                <div class="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                <div class="absolute inset-0 bg-cyan-500/5 group-hover:bg-magenta-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
             `;
             card.onclick = () => openGame(game);
             gamesGrid.appendChild(card);
@@ -101,29 +110,38 @@ async function init() {
         }
         
         const doc = win.document;
-        doc.title = 'Classes';
-        
-        const link = doc.createElement('link');
-        link.rel = 'icon';
-        link.type = 'image/png';
-        link.href = 'https://ssl.gstatic.com/classroom/favicon.png';
-        doc.head.appendChild(link);
-
-        const iframe = doc.createElement('iframe');
-        iframe.src = url;
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
-        iframe.style.position = 'fixed';
-        iframe.style.top = '0';
-        iframe.style.left = '0';
-        iframe.style.margin = '0';
-        iframe.style.padding = '0';
-        
-        doc.body.appendChild(iframe);
-        doc.body.style.margin = '0';
-        doc.body.style.padding = '0';
-        doc.body.style.overflow = 'hidden';
+        doc.open();
+        doc.write(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Classes</title>
+                <link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png">
+                <style>
+                    body, html { 
+                        margin: 0; 
+                        padding: 0; 
+                        height: 100%; 
+                        width: 100%; 
+                        overflow: hidden; 
+                        background-color: #050505;
+                    }
+                    iframe { 
+                        width: 100%; 
+                        height: 100%; 
+                        border: none; 
+                        display: block;
+                    }
+                </style>
+            </head>
+            <body>
+                <iframe src="${url}"></iframe>
+            </body>
+            </html>
+        `);
+        doc.close();
     };
 
     tabCloakBtn.onclick = () => {
